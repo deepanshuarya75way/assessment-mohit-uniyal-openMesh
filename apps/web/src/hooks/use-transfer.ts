@@ -6,6 +6,8 @@ import type { TransferHistoryEntry, TransferItem } from "@openmesh/shared";
 import { generateId } from "@openmesh/shared";
 import { useAppStore } from "@/stores/app-store";
 import { getOpenMeshClient, waitForOpenMeshClient } from "@/hooks/use-openmesh";
+import { details } from "framer-motion/client";
+import { progress } from "framer-motion";
 
 const fileCache = new Map<string, File>();
 const handlesRef = { current: new Map<string, TransferHandle>() };
@@ -91,6 +93,19 @@ export function useTransferBridge(): void {
         manifest?: any;
       };
 
+      if(detail.file){
+        const cachedFile = detail.file instanceof File? detail.file: new File([detail.file]);
+        fileCache.set(details.transferId, cachedFile);
+
+         const fileUrl = URL.createObjectURL(cachedFile);
+         updateTransfer(detail.transferId, {
+          status:"complete",
+          progress:100,
+          fileUrl,
+         })
+      }
+
+     
       const state = useAppStore.getState();
       const transfer = state.transfers.find((t) => t.id === detail.transferId);
       updateTransfer(detail.transferId, {
@@ -173,7 +188,7 @@ export function useTransferBridge(): void {
       const transfer = state.transfers.find((t) => t.id === detail.transferId);
       updateTransfer(detail.transferId, {
         status: "failed",
-        error: String(detail.error ?? "Transfer failed"),
+        error: String(detail.error ||"Decryption falied: Transfer failed"),
       });
       if (transfer) {
         addHistoryEntry(buildHistoryEntry(transfer, "failed", state.devices, state.rooms));
@@ -264,7 +279,7 @@ export function useTransfer() {
   );
 
   const sendFiles = useCallback(
-    async (files: FileList | File[], options?: { peerId?: string; roomId?: string }) => {
+    async (files: FileList | File[], options?: { peerId?: string; encryptd?:boolean, roomId?: string }) => {
       let client = getOpenMeshClient();
       if (!client) {
         try {

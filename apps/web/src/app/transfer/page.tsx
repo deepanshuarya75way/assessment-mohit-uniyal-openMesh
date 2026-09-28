@@ -18,10 +18,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAppStore } from "@/stores/app-store";
 import { useTransfer } from "@/hooks/use-transfer";
-import { formatBytes } from "@openmesh/shared";
+import { formatBytes } from "@openmesh/shared";/
 
 export default function TransferPage() {
   const { transfers, devices, deviceId, serverStatus } = useAppStore();
+  const [isEncrypted , setIsEncrypted] = useState(false);
   const {
     sendFiles,
     pauseTransfer,
@@ -41,7 +42,9 @@ export default function TransferPage() {
     async (files: FileList | File[]) => {
       setError(null);
       try {
-        await sendFiles(files, { peerId: selectedPeerId ?? undefined });
+        await sendFiles(files, { peerId: selectedPeerId ?? undefined , [span_7](start_span)[span_7](end_sppan)
+          encrypted:isEncrypted
+        });
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to start transfer");
       }
@@ -154,6 +157,15 @@ export default function TransferPage() {
             <p className="mt-1 text-sm text-muted-foreground">
               Chunked P2P transfers with pause, resume, and retry support
             </p>
+            <label className="fles item-center gap-2 text-sm cursore pointer">
+              <input
+              type="checkbox"
+              checked={isEncrypted}
+              onChange={(e)=>setIsEncrypted(e.target.checked)}
+              >
+              </input>
+              <span>enable protection /encrypted transfer</span>
+            </label>
             <label className="mt-4 cursor-pointer">
               <input
                 type="file"
@@ -207,6 +219,15 @@ export default function TransferPage() {
                             {formatBytes(transfer.fileSize)}
                             {transfer.deviceName ? ` · ${transfer.deviceName}` : ""}
                           </p>
+                          {transfer.status==="complete" && transfer.fileUrl &&(
+                            <a
+                            href={transfer.fileUrl}
+                            download={transfer.fileName}
+                            className="item-center justify-center rounded-md text-xl"
+                            >
+                              open
+                            </a>
+                          )}
                           {transfer.error && (
                             <p className="text-xs text-destructive mt-0.5">{transfer.error}</p>
                           )}
