@@ -220,7 +220,7 @@ export default function TransferPage() {
                             {formatBytes(transfer.fileSize)}
                             {transfer.deviceName ? ` · ${transfer.deviceName}` : ""}
                           </p>
-                          {transfer.status==="complete" && transfer.fileUrl &&(
+                          {/* {transfer.status==="complete" && transfer.fileUrl &&(
                             <a
                             href={transfer.fileUrl}
                             download={transfer.fileName}
@@ -228,7 +228,7 @@ export default function TransferPage() {
                             >
                               open
                             </a>
-                          )}
+                          )} */}
                           {transfer.error && (
                             <p className="text-xs text-destructive mt-0.5">{transfer.error}</p>
                           )}

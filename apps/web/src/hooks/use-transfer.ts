@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect } from "react";
 import type { TransferHandle } from "@openmesh/sdk";
-import type { TransferHistoryEntry, TransferItem } from "../../../../packages/shared/src";
+import type { TransferHistoryEntry, TransferItem } from "@openmesh/shared";
 import { generateId } from "../../../../packages/shared/src";
 import { useAppStore } from "@/stores/app-store";
 import { getOpenMeshClient, waitForOpenMeshClient } from "@/hooks/use-openmesh";
