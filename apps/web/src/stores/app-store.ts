@@ -9,8 +9,8 @@ import type {
   TransferItem,
   TextMessagePayload,
   TransferHistoryEntry,
-} from "@openmesh/shared";
-import { DEFAULT_SETTINGS, generateId, getDefaultDeviceName } from "@openmesh/shared";
+} from "../../../../packages/shared/src";
+import { DEFAULT_SETTINGS, generateId, getDefaultDeviceName } from "../../../../packages/shared/src";
 import type { Socket } from "socket.io-client";
 
 interface AppState {

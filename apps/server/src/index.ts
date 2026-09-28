@@ -1,7 +1,7 @@
 import express, { type Express } from "express";
 import cors from "cors";
 import { createServer } from "node:http";
-import { APP_VERSION, createApiResponse, PORTS } from "@openmesh/shared";
+import { APP_VERSION, createApiResponse, PORTS } from "../../../packages/shared/src/index.js";
 import { createSocketServer } from "./socket/index.js";
 
 import { connectDB } from "./services/db.js";

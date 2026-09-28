@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAppStore } from "@/stores/app-store";
 import { useTransfer } from "@/hooks/use-transfer";
-import { formatBytes } from "@openmesh/shared";/
+import { formatBytes } from "../../../../../packages/shared/src";
 
 export default function TransferPage() {
   const { transfers, devices, deviceId, serverStatus } = useAppStore();
@@ -40,10 +40,11 @@ export default function TransferPage() {
 
   const handleFiles = useCallback(
     async (files: FileList | File[]) => {
+      
       setError(null);
       try {
-        await sendFiles(files, { peerId: selectedPeerId ?? undefined , [span_7](start_span)[span_7](end_sppan)
-          encrypted:isEncrypted
+        await sendFiles(files, { peerId: selectedPeerId ?? undefined 
+          
         });
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to start transfer");
@@ -164,7 +165,7 @@ export default function TransferPage() {
               onChange={(e)=>setIsEncrypted(e.target.checked)}
               >
               </input>
-              <span>enable protection /encrypted transfer</span>
+              <span className="text-xl">enable protection /encrypted transfer</span>
             </label>
             <label className="mt-4 cursor-pointer">
               <input

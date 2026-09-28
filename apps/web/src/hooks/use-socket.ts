@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type RefObject } from "react";
 import { io, type Socket } from "socket.io-client";
-import { SOCKET_EVENTS, type Device, type Room } from "@openmesh/shared";
+import { SOCKET_EVENTS, type Device, type Room } from "../../../../packages/shared/src";
 import { useAppStore } from "@/stores/app-store";
 
 let activeSocket: Socket | null = null;
