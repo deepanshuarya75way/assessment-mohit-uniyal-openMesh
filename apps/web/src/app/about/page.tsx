@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Github, Heart, Shield, Code, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { APP_VERSION } from "@openmesh/shared";
+import { APP_VERSION } from "../../../../../packages/shared/src"
 
 const techStack = [
   "Next.js",

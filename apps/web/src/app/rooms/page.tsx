@@ -23,8 +23,8 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useAppStore } from "@/stores/app-store";
 import { useTransfer } from "@/hooks/use-transfer";
-import { formatBytes, SOCKET_EVENTS } from "@openmesh/shared";
-import type { Room, TextMessagePayload } from "@openmesh/shared";
+import { formatBytes, SOCKET_EVENTS } from "../../../../../packages/shared/src"
+import type { Room, TextMessagePayload } from "../../../../../packages/shared/src"
 
 export default function RoomsPage() {
   const {

@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useAppStore } from "@/stores/app-store";
-import { CHUNK_SIZE_OPTIONS } from "@openmesh/shared";
+import { CHUNK_SIZE_OPTIONS } from "../../../../../packages/shared/src"
 
 export default function SettingsPage() {
   const { settings, setSettings, deviceId } = useAppStore();
