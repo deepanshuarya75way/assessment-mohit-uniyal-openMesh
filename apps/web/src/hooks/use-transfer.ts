@@ -93,17 +93,17 @@ export function useTransferBridge(): void {
         manifest?: any;
       };
 
-      if(detail.file){
-        const cachedFile = detail.file instanceof File? detail.file: new File([detail.file]);
-        fileCache.set(details.transferId, cachedFile);
+      // if(detail.file){
+      //   const cachedFile = detail.file instanceof File? detail.file: new File([detail.file]);
+      //   fileCache.set(details.transferId, cachedFile);
 
-         const fileUrl = URL.createObjectURL(cachedFile);
-         updateTransfer(detail.transferId, {
-          status:"complete",
-          progress:100,
-          fileUrl,
-         })
-      }
+      //    const fileUrl = URL.createObjectURL(cachedFile);
+      //    updateTransfer(detail.transferId, {
+      //     status:"complete",
+      //     progress:100,
+      //     fileUrl,
+      //    })
+      // }
 
      
       const state = useAppStore.getState();
