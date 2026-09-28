@@ -29,7 +29,7 @@ export async function fetchAndDecryptFile(): Promise<Blob>{
     const decryptBuffer = await window.crypto.subtle.decrypt({
       name:"AES-GCM",
       iv:iv,
-      tagLength:128
+      tagLength:128 //bits
     },
     cryptoKey,
     encryptPlayload

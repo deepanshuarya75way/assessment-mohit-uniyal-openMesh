@@ -2,7 +2,7 @@ import { DEFAULT_SETTINGS, generateId, SOCKET_EVENTS } from "@openmesh/shared";
 import type {
   AppSettings,
   Device,
-  Room,
+  Room
   TextMessagePayload,
   DeviceRegisterPayload,
   WebRTCSignalPayload,
