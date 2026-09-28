@@ -43,7 +43,7 @@ app.get("/api/health", (_req, res) => {
   );
 });
 
-const port = Number(process.env.PORT ?? PORTS.SERVER);
+const port = 4000;
 
 httpServer.listen(port, () => {
   console.log(`[openmesh] Server running on http://localhost:${port}`);
